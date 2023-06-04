@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get_it/get_it.dart';
 import 'package:the_mind/src/presentation/splash_screen/cubit/splash_screen_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/values.dart';
+import '../../../../injection_container.dart';
+import '../../../core/presentation/values/values.dart';
 
 @RoutePage()
 class SplashScreenPage extends StatelessWidget {
@@ -14,7 +16,7 @@ class SplashScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => SplashScreenCubit()..initServices(),
+        create: (context) => getIt<SplashScreenCubit>()..initServices(),
         child: _Body(),
       ),
     );
@@ -46,10 +48,10 @@ class _Body extends HookWidget {
           children: [
             const Text(
               'The mind',
-              style: TextStyle(color: Colors.white, fontSize: AppDimens.d48),
+              style: TextStyle(color: Colors.white, fontSize: AppDimensions.d48),
             ),
             const SizedBox(
-              height: AppDimens.d16,
+              height: AppDimensions.d16,
             ),
             Center(child: _buildTimeIndicator(context, controller)),
           ],
@@ -69,4 +71,4 @@ class _Body extends HookWidget {
       );
 }
 
-Future<void> _onCompletePushMainMenu(BuildContext context) => context.router.navigateNamed('/mainMenu');
+Future<void> _onCompletePushMainMenu(BuildContext context) => context.router.navigateNamed('/userSettings');

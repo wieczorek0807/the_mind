@@ -1,7 +1,7 @@
 part of 'values.dart';
 
-class AppDimens {
-  const AppDimens._();
+class AppDimensions {
+  const AppDimensions._();
 
   // common dimens
   static const d2 = 2.0;

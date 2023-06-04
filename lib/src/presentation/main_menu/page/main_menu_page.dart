@@ -7,8 +7,14 @@ class MainMenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Main Menu Page'),
+    return const Scaffold(
+      body: Column(
+        children: [
+          Center(
+            child: Text('Main Menu Page'),
+          ),
+        ],
+      ),
     );
   }
 }
