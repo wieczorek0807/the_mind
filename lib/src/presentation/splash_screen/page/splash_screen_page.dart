@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:the_mind/src/presentation/splash_screen/cubit/splash_screen_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../injection_container.dart';
+import '../../../core/injection/injection.dart';
 import '../../../core/presentation/values/values.dart';
 
 @RoutePage()
@@ -71,4 +71,4 @@ class _Body extends HookWidget {
       );
 }
 
-Future<void> _onCompletePushMainMenu(BuildContext context) => context.router.navigateNamed('/userSettings');
+Future<void> _onCompletePushMainMenu(BuildContext context) => context.router.replaceNamed('/userSettings');

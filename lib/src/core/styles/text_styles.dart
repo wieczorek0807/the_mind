@@ -32,12 +32,19 @@ class TextStyles {
   );
 
   static const headline1 = TextStyle(
-    color: Colors.red,
+    color: AppColors.white,
     fontSize: FontSizes.headline1,
     fontWeight: FontWeight.w300,
   );
 
   static const introText = TextStyle(
+    color: AppColors.white,
+    fontSize: 20,
+    fontFamily: AppFonts.bungee,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const howToPlay = TextStyle(
     color: AppColors.white,
     fontSize: 20,
     fontFamily: AppFonts.bungee,

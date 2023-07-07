@@ -7,24 +7,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'package:the_mind/main.dart';
+import 'package:the_mind/src/data/models/user_settings/user_settings_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  group('description', () {
+    test('localdataSource', () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Hive.initFlutter();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      Hive.registerAdapter(UserSettingsModelAdapter());
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      // var box = await Hive.openBox('box');
+      // UserSettingsModel userSettings = box.get('box');
+      // print(userSettings);
+    });
   });
 }
