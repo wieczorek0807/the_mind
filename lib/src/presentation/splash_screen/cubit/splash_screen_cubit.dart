@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:loggy/loggy.dart';
 import 'package:the_mind/src/core/injection/injection.dart' as injection_container;
-import 'package:the_mind/src/data/local_data_source/database/database_client.dart';
+
+import '../../../data/database/database.dart';
 
 part 'splash_screen_state.dart';
 part 'splash_screen_cubit.freezed.dart';
@@ -12,6 +14,8 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
   SplashScreenCubit() : super(const SplashScreenState.initial());
 
   Future<void> initServices() async {
+    _emitStatus(0.1);
+
     // await _configureDatabases();
     _emitStatus(0.25);
 
@@ -23,9 +27,7 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
     _emitStatus(1.0);
   }
 
-  Future<void> _configureDatabases() async {
-    await DatabaseClientFactory.create();
-  }
+  Future<void> _configureDatabases() async {}
 
   Future<void> _emitStatus(double value) async => emit(SplashScreenState.loading(value));
 }

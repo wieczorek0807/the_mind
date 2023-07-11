@@ -20,7 +20,7 @@ class UserSettingsPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppDimensions.d56),
           child: BlocProvider(
-            create: (context) => getIt<UserSettingsCubit>(),
+            create: (_) => getIt<UserSettingsCubit>()..getUserSettings(),
             child: Column(
               children: [
                 const NicknameField(),
@@ -40,6 +40,8 @@ class UserSettingsPage extends StatelessWidget {
                 AppButton(
                   text: 'NEXT',
                   onPressed: () {
+                    //? Dlaczego nie działa z block provider???
+                    print(getIt<UserSettingsCubit>().ifNicknameIsNotEmpty());
                     if (getIt<UserSettingsCubit>().ifNicknameIsNotEmpty()) context.router.navigateNamed('/mainMenu');
                     //?Czy block się zamyka po navigowaniu do innego screena?
                   },

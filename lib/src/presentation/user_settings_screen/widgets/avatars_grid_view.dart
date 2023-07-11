@@ -24,7 +24,7 @@ class AvatarsGridView extends StatelessWidget {
                 child: AppCircleAvatar(
                   isSellected: userNameSettingsSate.userSettingsEntity.avatarId == index ? true : false,
                   avatarId: index,
-                  onTap: () => getIt<UserSettingsCubit>().saveUserSettings(avatarId: index),
+                  onTap: () => context.read<UserSettingsCubit>().saveUserSettings(avatarId: index),
                 ),
               );
             },

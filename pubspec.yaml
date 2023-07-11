@@ -38,6 +38,7 @@ dependencies:
   dartz: ^0.10.1
   injectable_generator: ^2.1.6
   injectable: ^2.1.2
+  loggy: ^2.0.3
 
 dev_dependencies:
   flutter_test:

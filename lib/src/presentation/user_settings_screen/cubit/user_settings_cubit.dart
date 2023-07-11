@@ -8,14 +8,12 @@ import 'package:the_mind/src/domain/use_case/user_settings/save_user_settings_us
 part 'user_settings_state.dart';
 part 'user_settings_cubit.freezed.dart';
 
-@singleton
+@injectable
 class UserSettingsCubit extends Cubit<UserSettingsState> {
   final GetUserSettingsUsecase getuserSettingsUsecase;
   final SaveUserSettingsUsecase saveuserSettingsUsecase;
 
-  UserSettingsCubit(this.getuserSettingsUsecase, this.saveuserSettingsUsecase) : super(const UserSettingsState()) {
-    getUserSettings();
-  }
+  UserSettingsCubit(this.getuserSettingsUsecase, this.saveuserSettingsUsecase) : super(const UserSettingsState());
 
   Future<void> getUserSettings() async {
     final result = await getuserSettingsUsecase();

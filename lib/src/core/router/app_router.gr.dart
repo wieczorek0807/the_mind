@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    GameJoiningRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const GameJoiningPage(),
+      );
+    },
     HowToPlayRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -39,13 +45,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserSettingsPage(),
       );
     },
-    GameJoiningRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const GameJoiningPage(),
-      );
-    },
   };
+}
+
+/// generated route for
+/// [GameJoiningPage]
+class GameJoiningRoute extends PageRouteInfo<void> {
+  const GameJoiningRoute({List<PageRouteInfo>? children})
+      : super(
+          GameJoiningRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GameJoiningRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -100,20 +114,6 @@ class UserSettingsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'UserSettingsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [GameJoiningPage]
-class GameJoiningRoute extends PageRouteInfo<void> {
-  const GameJoiningRoute({List<PageRouteInfo>? children})
-      : super(
-          GameJoiningRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'GameJoiningRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

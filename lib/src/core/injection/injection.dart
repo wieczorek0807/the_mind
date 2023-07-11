@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:loggy/loggy.dart';
 
+import '../../data/database/database.dart';
 import 'injection.config.dart';
 
 final getIt = GetIt.instance;
@@ -12,6 +14,7 @@ final getIt = GetIt.instance;
 )
 // Invoke at app start
 Future<GetIt> configureDependencies() async {
+  // Loggy.initLoggy();
   return $initGetIt(getIt);
 }
 

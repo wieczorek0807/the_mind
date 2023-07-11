@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:loggy/loggy.dart';
 import 'package:the_mind/src/core/presentation/themes/app_themes.dart';
 import 'package:the_mind/src/core/router/app_router.dart';
-import 'package:the_mind/src/data/local_data_source/database/database_client.dart';
+import 'package:the_mind/src/data/database/database.dart';
 import 'src/core/injection/injection.dart';
 
 void main() async {
-  await DatabaseClientFactory.create();
+  Loggy.initLoggy();
+  await DatabaseClient.init();
   configureDependencies();
   runApp(MyApp());
 }
