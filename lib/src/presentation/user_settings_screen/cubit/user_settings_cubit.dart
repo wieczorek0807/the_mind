@@ -13,20 +13,26 @@ class UserSettingsCubit extends Cubit<UserSettingsState> {
   final GetUserSettingsUsecase getuserSettingsUsecase;
   final SaveUserSettingsUsecase saveuserSettingsUsecase;
 
-  UserSettingsCubit(this.getuserSettingsUsecase, this.saveuserSettingsUsecase) : super(const UserSettingsState());
+  UserSettingsCubit(this.getuserSettingsUsecase, this.saveuserSettingsUsecase) : super(const UserSettingsState.initial());
 
   Future<void> getUserSettings() async {
     final result = await getuserSettingsUsecase();
-    result.fold((l) => emit(const UserSettingsState()), (r) => emit(UserSettingsState(r)));
+    result.fold((l) => emit(const UserSettingsState.failure()), (r) => emit(UserSettingsState.settingsLoaded(r)));
   }
 
   void saveUserSettings({String? username, int? avatarId}) {
-    if (username != null) saveuserSettingsUsecase(state.userSettingsEntity.copyWith(nickname: username));
-    if (avatarId != null) saveuserSettingsUsecase(state.userSettingsEntity.copyWith(avatarId: avatarId));
-    getUserSettings();
-  }
+    state.maybeMap(
+      orElse: () {},
+      settingsLoaded: (value) {
+        if (username != null) {
+          saveuserSettingsUsecase(value.userSettingsEntity.copyWith(nickname: username));
+        }
 
-  bool ifNicknameIsNotEmpty() {
-    return state.userSettingsEntity.nickname.isNotEmpty;
+        if (avatarId != null) {
+          saveuserSettingsUsecase(value.userSettingsEntity.copyWith(avatarId: avatarId));
+        }
+      },
+    );
+    getUserSettings();
   }
 }

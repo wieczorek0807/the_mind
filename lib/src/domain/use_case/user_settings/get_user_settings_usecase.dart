@@ -12,6 +12,7 @@ class GetUserSettingsUsecase implements UseCase<UserSettingsEntity, void> {
 
   GetUserSettingsUsecase(this._userSettingsRepository);
 
+  @override
   Future<Either<Failure, UserSettingsEntity>> call([void noParams]) async => (await _userSettingsRepository.getUserSettings()).fold(
         (failure) => Left(failure),
         (r) => Right(r),

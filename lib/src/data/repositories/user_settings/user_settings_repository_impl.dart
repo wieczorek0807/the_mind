@@ -15,7 +15,7 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
 
   @override
   Future<Either<Failure, UserSettingsEntity>> getUserSettings() async {
-    final UserSettingsModel localDataSource = await _localDataSource.getSettings();
+    final UserSettingsModel localDataSource = _localDataSource.getSettings();
 
     return right(UserSettingsEntity(nickname: localDataSource.nickname, avatarId: localDataSource.avatarId));
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_mind/src/core/presentation/values/values.dart';
 import 'package:the_mind/src/core/presentation/widgets/app_button.dart';
+import 'package:the_mind/src/core/presentation/widgets/app_default_screen.dart';
 import 'package:the_mind/src/presentation/user_settings_screen/cubit/user_settings_cubit.dart';
 import 'package:the_mind/src/presentation/user_settings_screen/widgets/avatars_grid_view.dart';
 import 'package:the_mind/src/presentation/user_settings_screen/widgets/nickname_field.dart';
@@ -15,42 +16,40 @@ class UserSettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(AppDimensions.d56),
-          child: BlocProvider(
-            create: (_) => getIt<UserSettingsCubit>()..getUserSettings(),
-            child: Column(
-              children: [
-                const NicknameField(),
-                const SizedBox(
-                  height: 30,
-                ),
-                const SizedBox(
-                  height: 500,
-                  child: Padding(
-                    padding: EdgeInsets.all(0.0),
-                    child: AvatarsGridView(),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                AppButton(
-                  text: 'NEXT',
-                  onPressed: () {
-                    //? Dlaczego nie działa z block provider???
-                    print(getIt<UserSettingsCubit>().ifNicknameIsNotEmpty());
-                    if (getIt<UserSettingsCubit>().ifNicknameIsNotEmpty()) context.router.navigateNamed('/mainMenu');
-                    //?Czy block się zamyka po navigowaniu do innego screena?
-                  },
-                ),
-              ],
-            ),
+    return AppDefaultScreen(
+      children: [
+        BlocProvider(
+          create: (context) => getIt<UserSettingsCubit>()..getUserSettings(),
+          child: BlocBuilder<UserSettingsCubit, UserSettingsState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) => const CircularProgressIndicator(),
+                failure: (_) => const Text('Please re-open app'),
+                settingsLoaded: (value) {
+                  return Column(
+                    children: [
+                      NicknameField(userSettingsEntity: value.userSettingsEntity),
+                      const SizedBox(
+                        height: AppDimensions.d28,
+                      ),
+                      AvatarsGridView(userSettingsEntity: value.userSettingsEntity),
+                      const SizedBox(
+                        height: AppDimensions.d28,
+                      ),
+                      AppButton(
+                        text: 'NEXT',
+                        onPressed: () {
+                          if (value.userSettingsEntity.nickname.isNotEmpty) context.router.navigateNamed('/mainMenu');
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
-        ),
-      ),
+        )
+      ],
     );
   }
 }

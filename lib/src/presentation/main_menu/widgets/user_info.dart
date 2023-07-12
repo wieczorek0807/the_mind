@@ -15,36 +15,42 @@ class UserInfo extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<UserSettingsCubit>()..getUserSettings(),
       child: BlocBuilder<UserSettingsCubit, UserSettingsState>(
-        builder: (BuildContext context, state) => Column(
-          children: [
-            Container(
-              width: 220,
-              height: 220,
-              child: AppCircleAvatar(
-                isSellected: false,
-                avatarId: state.userSettingsEntity.avatarId,
-                radiusCircular: 110.00,
-              ),
-              // BoxDecoration(
-              //   color: const Color(0xff7c94b6),
-              //   image: DecorationImage(
-              //     image: AssetImage(
-              //       AppImages.avatarListPng[state.userSettingsEntity.avatarId],
-              //     ),
-              //     fit: BoxFit.cover,
-              //   ),
-              //   borderRadius: const BorderRadius.all(Radius.circular(110.0)),
-              //   border: Border.all(
-              //     color: AppColors.white,
-              //     width: 4.0,
-              //   ),
-              // ),
-            ),
-            Text(
-              state.userSettingsEntity.nickname,
-              style: TextStyles.headline1,
-            ),
-          ],
+        builder: (BuildContext context, state) => state.map(
+          failure: (value) => const Text('failure'),
+          initial: (_) => const CircularProgressIndicator(),
+          settingsLoaded: (value) {
+            return Column(
+              children: [
+                Container(
+                  width: 220,
+                  height: 220,
+                  child: AppCircleAvatar(
+                    isSellected: false,
+                    avatarId: value.userSettingsEntity.avatarId,
+                    radiusCircular: 110.00,
+                  ),
+                  // BoxDecoration(
+                  //   color: const Color(0xff7c94b6),
+                  //   image: DecorationImage(
+                  //     image: AssetImage(
+                  //       AppImages.avatarListPng[state.userSettingsEntity.avatarId],
+                  //     ),
+                  //     fit: BoxFit.cover,
+                  //   ),
+                  //   borderRadius: const BorderRadius.all(Radius.circular(110.0)),
+                  //   border: Border.all(
+                  //     color: AppColors.white,
+                  //     width: 4.0,
+                  //   ),
+                  // ),
+                ),
+                Text(
+                  value.userSettingsEntity.nickname,
+                  style: TextStyles.headline1,
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

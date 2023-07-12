@@ -16,11 +16,51 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserSettingsState {
-  UserSettingsEntity get userSettingsEntity =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() failure,
+    required TResult Function(UserSettingsEntity userSettingsEntity)
+        settingsLoaded,
+  }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $UserSettingsStateCopyWith<UserSettingsState> get copyWith =>
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? failure,
+    TResult? Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? failure,
+    TResult Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserSettingsStateInitial value) initial,
+    required TResult Function(_UserSettingsStateFailure value) failure,
+    required TResult Function(_UserSettingsStateSettingsLoaded value)
+        settingsLoaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserSettingsStateInitial value)? initial,
+    TResult? Function(_UserSettingsStateFailure value)? failure,
+    TResult? Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserSettingsStateInitial value)? initial,
+    TResult Function(_UserSettingsStateFailure value)? failure,
+    TResult Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -29,10 +69,6 @@ abstract class $UserSettingsStateCopyWith<$Res> {
   factory $UserSettingsStateCopyWith(
           UserSettingsState value, $Res Function(UserSettingsState) then) =
       _$UserSettingsStateCopyWithImpl<$Res, UserSettingsState>;
-  @useResult
-  $Res call({UserSettingsEntity userSettingsEntity});
-
-  $UserSettingsEntityCopyWith<$Res> get userSettingsEntity;
 }
 
 /// @nodoc
@@ -44,50 +80,252 @@ class _$UserSettingsStateCopyWithImpl<$Res, $Val extends UserSettingsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userSettingsEntity = null,
-  }) {
-    return _then(_value.copyWith(
-      userSettingsEntity: null == userSettingsEntity
-          ? _value.userSettingsEntity
-          : userSettingsEntity // ignore: cast_nullable_to_non_nullable
-              as UserSettingsEntity,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserSettingsEntityCopyWith<$Res> get userSettingsEntity {
-    return $UserSettingsEntityCopyWith<$Res>(_value.userSettingsEntity,
-        (value) {
-      return _then(_value.copyWith(userSettingsEntity: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_UserSettingsStateCopyWith<$Res>
-    implements $UserSettingsStateCopyWith<$Res> {
-  factory _$$_UserSettingsStateCopyWith(_$_UserSettingsState value,
-          $Res Function(_$_UserSettingsState) then) =
-      __$$_UserSettingsStateCopyWithImpl<$Res>;
+abstract class _$$_UserSettingsStateInitialCopyWith<$Res> {
+  factory _$$_UserSettingsStateInitialCopyWith(
+          _$_UserSettingsStateInitial value,
+          $Res Function(_$_UserSettingsStateInitial) then) =
+      __$$_UserSettingsStateInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UserSettingsStateInitialCopyWithImpl<$Res>
+    extends _$UserSettingsStateCopyWithImpl<$Res, _$_UserSettingsStateInitial>
+    implements _$$_UserSettingsStateInitialCopyWith<$Res> {
+  __$$_UserSettingsStateInitialCopyWithImpl(_$_UserSettingsStateInitial _value,
+      $Res Function(_$_UserSettingsStateInitial) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UserSettingsStateInitial implements _UserSettingsStateInitial {
+  const _$_UserSettingsStateInitial();
+
   @override
+  String toString() {
+    return 'UserSettingsState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserSettingsStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() failure,
+    required TResult Function(UserSettingsEntity userSettingsEntity)
+        settingsLoaded,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? failure,
+    TResult? Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? failure,
+    TResult Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserSettingsStateInitial value) initial,
+    required TResult Function(_UserSettingsStateFailure value) failure,
+    required TResult Function(_UserSettingsStateSettingsLoaded value)
+        settingsLoaded,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserSettingsStateInitial value)? initial,
+    TResult? Function(_UserSettingsStateFailure value)? failure,
+    TResult? Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserSettingsStateInitial value)? initial,
+    TResult Function(_UserSettingsStateFailure value)? failure,
+    TResult Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserSettingsStateInitial implements UserSettingsState {
+  const factory _UserSettingsStateInitial() = _$_UserSettingsStateInitial;
+}
+
+/// @nodoc
+abstract class _$$_UserSettingsStateFailureCopyWith<$Res> {
+  factory _$$_UserSettingsStateFailureCopyWith(
+          _$_UserSettingsStateFailure value,
+          $Res Function(_$_UserSettingsStateFailure) then) =
+      __$$_UserSettingsStateFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UserSettingsStateFailureCopyWithImpl<$Res>
+    extends _$UserSettingsStateCopyWithImpl<$Res, _$_UserSettingsStateFailure>
+    implements _$$_UserSettingsStateFailureCopyWith<$Res> {
+  __$$_UserSettingsStateFailureCopyWithImpl(_$_UserSettingsStateFailure _value,
+      $Res Function(_$_UserSettingsStateFailure) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UserSettingsStateFailure implements _UserSettingsStateFailure {
+  const _$_UserSettingsStateFailure();
+
+  @override
+  String toString() {
+    return 'UserSettingsState.failure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserSettingsStateFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() failure,
+    required TResult Function(UserSettingsEntity userSettingsEntity)
+        settingsLoaded,
+  }) {
+    return failure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? failure,
+    TResult? Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+  }) {
+    return failure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? failure,
+    TResult Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserSettingsStateInitial value) initial,
+    required TResult Function(_UserSettingsStateFailure value) failure,
+    required TResult Function(_UserSettingsStateSettingsLoaded value)
+        settingsLoaded,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserSettingsStateInitial value)? initial,
+    TResult? Function(_UserSettingsStateFailure value)? failure,
+    TResult? Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserSettingsStateInitial value)? initial,
+    TResult Function(_UserSettingsStateFailure value)? failure,
+    TResult Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserSettingsStateFailure implements UserSettingsState {
+  const factory _UserSettingsStateFailure() = _$_UserSettingsStateFailure;
+}
+
+/// @nodoc
+abstract class _$$_UserSettingsStateSettingsLoadedCopyWith<$Res> {
+  factory _$$_UserSettingsStateSettingsLoadedCopyWith(
+          _$_UserSettingsStateSettingsLoaded value,
+          $Res Function(_$_UserSettingsStateSettingsLoaded) then) =
+      __$$_UserSettingsStateSettingsLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({UserSettingsEntity userSettingsEntity});
 
-  @override
   $UserSettingsEntityCopyWith<$Res> get userSettingsEntity;
 }
 
 /// @nodoc
-class __$$_UserSettingsStateCopyWithImpl<$Res>
-    extends _$UserSettingsStateCopyWithImpl<$Res, _$_UserSettingsState>
-    implements _$$_UserSettingsStateCopyWith<$Res> {
-  __$$_UserSettingsStateCopyWithImpl(
-      _$_UserSettingsState _value, $Res Function(_$_UserSettingsState) _then)
+class __$$_UserSettingsStateSettingsLoadedCopyWithImpl<$Res>
+    extends _$UserSettingsStateCopyWithImpl<$Res,
+        _$_UserSettingsStateSettingsLoaded>
+    implements _$$_UserSettingsStateSettingsLoadedCopyWith<$Res> {
+  __$$_UserSettingsStateSettingsLoadedCopyWithImpl(
+      _$_UserSettingsStateSettingsLoaded _value,
+      $Res Function(_$_UserSettingsStateSettingsLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,19 +333,29 @@ class __$$_UserSettingsStateCopyWithImpl<$Res>
   $Res call({
     Object? userSettingsEntity = null,
   }) {
-    return _then(_$_UserSettingsState(
+    return _then(_$_UserSettingsStateSettingsLoaded(
       null == userSettingsEntity
           ? _value.userSettingsEntity
           : userSettingsEntity // ignore: cast_nullable_to_non_nullable
               as UserSettingsEntity,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserSettingsEntityCopyWith<$Res> get userSettingsEntity {
+    return $UserSettingsEntityCopyWith<$Res>(_value.userSettingsEntity,
+        (value) {
+      return _then(_value.copyWith(userSettingsEntity: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_UserSettingsState implements _UserSettingsState {
-  const _$_UserSettingsState(
+class _$_UserSettingsStateSettingsLoaded
+    implements _UserSettingsStateSettingsLoaded {
+  const _$_UserSettingsStateSettingsLoaded(
       [this.userSettingsEntity =
           const UserSettingsEntity(nickname: '', avatarId: 0)]);
 
@@ -117,14 +365,14 @@ class _$_UserSettingsState implements _UserSettingsState {
 
   @override
   String toString() {
-    return 'UserSettingsState(userSettingsEntity: $userSettingsEntity)';
+    return 'UserSettingsState.settingsLoaded(userSettingsEntity: $userSettingsEntity)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserSettingsState &&
+            other is _$_UserSettingsStateSettingsLoaded &&
             (identical(other.userSettingsEntity, userSettingsEntity) ||
                 other.userSettingsEntity == userSettingsEntity));
   }
@@ -135,19 +383,90 @@ class _$_UserSettingsState implements _UserSettingsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserSettingsStateCopyWith<_$_UserSettingsState> get copyWith =>
-      __$$_UserSettingsStateCopyWithImpl<_$_UserSettingsState>(
-          this, _$identity);
+  _$$_UserSettingsStateSettingsLoadedCopyWith<
+          _$_UserSettingsStateSettingsLoaded>
+      get copyWith => __$$_UserSettingsStateSettingsLoadedCopyWithImpl<
+          _$_UserSettingsStateSettingsLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() failure,
+    required TResult Function(UserSettingsEntity userSettingsEntity)
+        settingsLoaded,
+  }) {
+    return settingsLoaded(userSettingsEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? failure,
+    TResult? Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+  }) {
+    return settingsLoaded?.call(userSettingsEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? failure,
+    TResult Function(UserSettingsEntity userSettingsEntity)? settingsLoaded,
+    required TResult orElse(),
+  }) {
+    if (settingsLoaded != null) {
+      return settingsLoaded(userSettingsEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserSettingsStateInitial value) initial,
+    required TResult Function(_UserSettingsStateFailure value) failure,
+    required TResult Function(_UserSettingsStateSettingsLoaded value)
+        settingsLoaded,
+  }) {
+    return settingsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserSettingsStateInitial value)? initial,
+    TResult? Function(_UserSettingsStateFailure value)? failure,
+    TResult? Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+  }) {
+    return settingsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserSettingsStateInitial value)? initial,
+    TResult Function(_UserSettingsStateFailure value)? failure,
+    TResult Function(_UserSettingsStateSettingsLoaded value)? settingsLoaded,
+    required TResult orElse(),
+  }) {
+    if (settingsLoaded != null) {
+      return settingsLoaded(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _UserSettingsState implements UserSettingsState {
-  const factory _UserSettingsState(
-      [final UserSettingsEntity userSettingsEntity]) = _$_UserSettingsState;
+abstract class _UserSettingsStateSettingsLoaded implements UserSettingsState {
+  const factory _UserSettingsStateSettingsLoaded(
+          [final UserSettingsEntity userSettingsEntity]) =
+      _$_UserSettingsStateSettingsLoaded;
 
-  @override
   UserSettingsEntity get userSettingsEntity;
-  @override
   @JsonKey(ignore: true)
-  _$$_UserSettingsStateCopyWith<_$_UserSettingsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserSettingsStateSettingsLoadedCopyWith<
+          _$_UserSettingsStateSettingsLoaded>
+      get copyWith => throw _privateConstructorUsedError;
 }
